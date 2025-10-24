@@ -11,3 +11,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Global layout helpers and variables are in App.css; keep base typography here */
+html, body, #root { height: 100%; }
+* { box-sizing: border-box; }
+
+a { color: inherit; }
+

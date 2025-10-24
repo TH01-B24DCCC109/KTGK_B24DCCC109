@@ -1,38 +1,210 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.app-root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: var(--bg);
+  color: var(--text);
+}
+
+:root {
+  --bg: #f6f8fa;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --primary: #2563eb;
+  --accent: #06b6d4;
+  --text: #0f172a;
+  --gap: 1rem;
+  --radius: 8px;
+}
+
+.navbar {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1.25rem;
+  background: linear-gradient(90deg,#ffffff99, #f3f4f6);
+  border-bottom: 1px solid #e6e9ee;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.navbar h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar a {
+  margin-left: 0.75rem;
+  text-decoration: none;
+  color: var(--muted);
+  padding: 0.35rem 0.5rem;
+  border-radius: 6px;
+}
+
+.navbar a.active {
+  background: var(--primary);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.main-content {
+  width: 100%;
+  max-width: 1100px;
+  margin: 1.25rem auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.container {
+  background: transparent;
 }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid #e6e9ee;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(16,24,40,0.04);
+  display: flex;
+  flex-direction: column;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(16,24,40,0.08);
+}
+
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+
+.card .content {
+  padding: 0.9rem;
+  flex: 1;
+}
+
+.card h3 {
+  margin: 0 0 0.35rem 0;
+  font-size: 1.05rem;
+}
+
+.card p {
+  margin: 0 0 0.5rem 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.card .meta {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+}
+
+.card .actions {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-top: 1px solid #f1f5f9;
+  background: linear-gradient(180deg,#ffffff00,#ffffff);
+}
+
+.btn {
+  border: 0;
+  background: var(--primary);
+  color: #fff;
+  padding: 0.45rem 0.7rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.btn.secondary {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid #e6e9ee;
+}
+
+.toolbar {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.search {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.search input {
+  padding: 0.45rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #e6e9ee;
+}
+
+.post-form {
+  background: var(--card);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #e6e9ee;
+  max-width: 800px;
+}
+
+.post-form input,
+.post-form select,
+.post-form textarea {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #e6e9ee;
+  box-sizing: border-box;
+}
+
+.post-form textarea { min-height: 220px; }
+
+.post-form .row {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.post-form .row > * { flex: 1; }
+
+.muted { color: var(--muted); }
+
+/* Responsive */
+@media (max-width: 980px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .grid { grid-template-columns: 1fr; }
+  .navbar { flex-direction: column; align-items: flex-start; }
+  .main-content { padding: 0 0.75rem; }
+}
+
+/* small utility spacing */
+.mb-1 { margin-bottom: 0.5rem; }
+.mt-1 { margin-top: 0.5rem; }
+
+/* keep legacy App styles for CRA examples */
+/* minimal reset for the logo sample */
+.App-logo { display:none; }
+
